@@ -77,7 +77,11 @@ impl<'a, T> Iterator for IterMut<'a, T> {
     fn next(&mut self) -> Option<(&'a str, &'a Uuid, &'a mut T)> {
         self.name_iter
             .next()
-            .and_then(|(name, uuid)| self.items.get(&uuid).map(|item| (&**name, uuid, item)))
+            .and_then(|(name, uuid)| {
+                          self.items
+                              .get_mut(&uuid)
+                              .map(|item| (&**name, uuid, item))
+                      })
     }
     #[inline]
     fn size_hint(&self) -> (usize, Option<usize>) {
