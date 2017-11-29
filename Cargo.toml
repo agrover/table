@@ -1,0 +1,10 @@
+[package]
+name = "table"
+version = "0.1.0"
+authors = ["Andy Grover <agrover@redhat.com>"]
+
+[dependencies]
+
+[dependencies.uuid]
+version = "0.5"
+features = ["serde", "v4"]
